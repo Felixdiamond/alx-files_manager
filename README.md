@@ -1,12 +1,13 @@
+# Files Manager
 
-## Technologies
+### Technologies
 
 - NodeJS
 - MongoDB
 - Pagination
 - Background Processing
 
-## Capabilities
+### Capabilities
 
 - User authentication via a token
 - List all files

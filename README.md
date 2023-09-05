@@ -18,5 +18,3 @@ A simple platform to upload and view files.
 - Change permission of a file
 - View a file
 - Generate thumbnails for images
-
-

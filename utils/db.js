@@ -29,7 +29,13 @@ class DBClient {
     const nbFiles = await filesCollection.countDocuments();
     return nbFiles;
   }
+
+  get users() {
+    const db = this.client.db(database);
+    return db.collection('users');
+  }
 }
 
 const dbClient = new DBClient();
 export default dbClient;
+

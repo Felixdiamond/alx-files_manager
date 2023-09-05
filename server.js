@@ -6,6 +6,8 @@ import redisClient from './utils/redis';
 const app = express();
 const port = process.env.PORT || 5000;
 
+app.use('/', routes);
+
 app.get('/status', (req, res) => {
   res.status(200).send({
     redis: redisClient.isAlive(),

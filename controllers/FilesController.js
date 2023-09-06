@@ -64,4 +64,4 @@ const postUpload = async (req, res) => {
   }
 };
 
-export default postUpload;
+export { postUpload };

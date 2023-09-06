@@ -1,9 +1,9 @@
 import path from 'path';
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
-import db from '../utils/db';
+import dbClient from '../utils/db';
 
-export const postUpload = async (req, res) => {
+const postUpload = async (req, res) => {
   try {
     // Retrieve the user based on the token
     const userCollection = dbClient.getUserCollection();
@@ -58,8 +58,11 @@ export const postUpload = async (req, res) => {
     // Save the file in the database and return it
     await file.save();
     res.status(201).json(file);
+    return null
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });
   }
 };
+
+export default postUpload;

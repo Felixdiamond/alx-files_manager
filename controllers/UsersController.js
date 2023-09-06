@@ -1,6 +1,6 @@
 import crypto from 'crypto';
-import dbClient from '../utils/db';
 import { ObjectId } from 'mongodb';
+import dbClient from '../utils/db';
 import redisClient from '../utils/redis';
 
 class UsersController {

@@ -58,6 +58,7 @@ const postUpload = async (req, res) => {
     // Save the file in the database and return it
     await file.save();
     res.status(201).json(file);
+    return null;
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });

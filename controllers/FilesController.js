@@ -9,7 +9,7 @@ const postUpload = async (req, res) => {
     const userCollection = dbClient.getUserCollection();
     const user = await userCollection.findOne({ token: req.headers['x-token'] });
     if (!user) {
-      return res.status(401).json({ error: 'Unauthorized' });
+        return res.status(401).json({ error: 'Unauthorized' });
     }
 
     // Validate the request body

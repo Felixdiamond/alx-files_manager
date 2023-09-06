@@ -6,7 +6,8 @@ import { v4 as uuidv4 } from 'uuid';
 export const postUpload = async (req, res) => {
   try {
     // Retrieve the user based on the token
-    const user = await db.User.findOne({ token: req.headers['x-token'] });
+    const userCollection = dbClient.getUserCollection();
+    const user = await userCollection.findOne({ token: req.headers['x-token'] });
     if (!user) {
       return res.status(401).json({ error: 'Unauthorized' });
     }

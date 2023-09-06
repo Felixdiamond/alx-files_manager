@@ -26,7 +26,7 @@ const postUpload = async (req, res) => {
       return res.status(400).json({ error: 'Missing data' });
     }
     if (parentId) {
-      const parentFile = await db.File.findById(parentId);
+      const parentFile = await dbClient.File.findById(parentId);
       if (!parentFile) {
         return res.status(400).json({ error: 'Parent not found' });
       }
@@ -36,7 +36,7 @@ const postUpload = async (req, res) => {
     }
 
     // Create a new file
-    const file = new db.File({
+    const file = new dbClient.File({
       userId: user._id,
       name,
       type,
@@ -58,7 +58,6 @@ const postUpload = async (req, res) => {
     // Save the file in the database and return it
     await file.save();
     res.status(201).json(file);
-    return null
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: err.message });

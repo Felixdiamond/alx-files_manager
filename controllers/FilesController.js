@@ -1,7 +1,7 @@
-import db from '../utils/db';
 import path from 'path';
 import fs from 'fs';
 import { v4 as uuidv4 } from 'uuid';
+import db from '../utils/db';
 
 export const postUpload = async (req, res) => {
   try {
@@ -13,7 +13,9 @@ export const postUpload = async (req, res) => {
     }
 
     // Validate the request body
-    const { name, type, parentId, isPublic, data } = req.body;
+    const {
+      name, type, parentId, isPublic, data,
+    } = req.body;
     if (!name) {
       return res.status(400).json({ error: 'Missing name' });
     }
@@ -44,8 +46,7 @@ export const postUpload = async (req, res) => {
 
     // Store the file locally if it's not a folder
     if (type !== 'folder') {
-      const folderPath =
-        process.env.FOLDER_PATH || path.join(__dirname, '..', '/tmp/files_manager');
+      const folderPath = process.env.FOLDER_PATH || path.join(__dirname, '..', '/tmp/files_manager');
       if (!fs.existsSync(folderPath)) {
         fs.mkdirSync(folderPath);
       }

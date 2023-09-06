@@ -30,6 +30,11 @@ class DBClient {
     return nbFiles;
   }
 
+  getUserCollection() {
+    const db = this.client.db(database);
+    return db.collection('users');
+  }
+
   get users() {
     const db = this.client.db(database);
     return db.collection('users');
